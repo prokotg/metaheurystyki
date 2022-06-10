@@ -96,6 +96,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,10 +132,13 @@
     <ClCompile Include="BinaryGenerators.cpp" />
     <ClCompile Include="BinaryMutations.cpp" />
     <ClCompile Include="BinaryRandomSearch.cpp" />
+    <ClCompile Include="GreedyAlgorithm.cpp" />
+    <ClCompile Include="GreedyRS.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClInclude Include="BinaryMutations.h" />
     <ClInclude Include="BinaryRandomSearch.h" />
     <ClInclude Include="GreedyAlgorithm.h" />
+    <ClInclude Include="GreedyRS.h" />
     <ClInclude Include="Individual.h" />
     <ClInclude Include="Mutation.h" />
     <ClInclude Include="RealCMAES.h" />

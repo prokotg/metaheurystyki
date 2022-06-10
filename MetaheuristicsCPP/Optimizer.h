@@ -105,8 +105,14 @@ namespace Optimizers
 				pc_result = new COptimizationResult<TElement>(dValue, vSolution, i_iteration_number, c_evaluation.iGetFFE(), TimeUtils::dCalculateSeconds(t_start_time));
 
 				b_best_updated = true;
-			}//if (pc_result == nullptr || dValue > pc_result->dGetBestValue() || dValue == pc_result->dGetBestValue() && !bOnlyImprovements)
+				// check
 
+
+			}//if (pc_result == nullptr || dValue > pc_result->dGetBestValue() || dValue == pc_result->dGetBestValue() && !bOnlyImprovements)
+			else
+			{
+				++nfails;
+			}
 			return b_best_updated;
 		}//void v_check_new_best(vector<TElement> &vSolution, double dValue)
 
@@ -114,7 +120,8 @@ namespace Optimizers
 		IStopCondition &c_stop_condition;
 
 		COptimizationResult<TElement> *pc_result;
-
+	protected:
+		size_t nfails = 0;
 	private:
 		long long i_iteration_number;
 		clock_t t_start_time;

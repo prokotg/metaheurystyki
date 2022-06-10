@@ -36,7 +36,6 @@ namespace Optimizers
 			return b_best_updated;
 		}//virtual bool b_run_iteration(long long iIterationNumber, clock_t tStartTime)
 
-	private:
 		IGenerator<TElement> &c_generation;
 	};//class CSamplingOptimizer : public COptimizer<TElement>
 }//namespace Optimizers

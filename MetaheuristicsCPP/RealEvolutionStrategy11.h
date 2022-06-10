@@ -22,6 +22,8 @@ namespace Optimizers
 		virtual void v_initialize(clock_t tStartTime);
 		virtual bool b_run_iteration(long long iIterationNumber, clock_t tStartTime);
 
+		std::vector<double> isNoisy(std::vector<double> vBestSolution);
+
 	private:
 		IRealMutationES11Adaptation &c_mutation_adaptation;
 		mt19937 &c_random_engine;
