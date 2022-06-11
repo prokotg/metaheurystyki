@@ -134,12 +134,14 @@
     <ClCompile Include="BinaryRandomSearch.cpp" />
     <ClCompile Include="GreedyAlgorithm.cpp" />
     <ClCompile Include="GreedyRS.cpp" />
+    <ClCompile Include="Lab1.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClInclude Include="BinaryMutations.h" />
     <ClInclude Include="BinaryRandomSearch.h" />
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="GreedyRS.h" />
     <ClInclude Include="Individual.h" />
+    <ClInclude Include="Lab1.h" />
     <ClInclude Include="Mutation.h" />
     <ClInclude Include="RealCMAES.h" />
     <ClInclude Include="RealMutationES11Adaptation.h" />
@@ -150,12 +152,14 @@
     <ClCompile Include="RealMutationES11Adaptations.cpp" />
     <ClCompile Include="RealMutations.cpp" />
     <ClCompile Include="RealRandomSearch.cpp" />
+    <ClCompile Include="ReportUtils.cpp" />
     <ClCompile Include="StopCondition.cpp" />
     <ClCompile Include="StopConditions.cpp" />
     <ClCompile Include="TimeUtils.cpp" />
     <ClInclude Include="RealEvolutionStrategy11.h" />
     <ClInclude Include="RealMutationES11Adaptations.h" />
     <ClInclude Include="RealRandomSearch.h" />
+    <ClInclude Include="ReportUtils.h" />
     <ClInclude Include="VectorUtils.h" />
   </ItemGroup>
   <ItemGroup>

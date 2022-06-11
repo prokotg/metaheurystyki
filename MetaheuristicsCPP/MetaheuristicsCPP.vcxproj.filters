@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Generators">
       <UniqueIdentifier>{a10c7a94-d0bd-47f4-96d0-fc52451e4465}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Labs">
+      <UniqueIdentifier>{5ef2f6bc-ce68-4389-b37a-5765b29b7e0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -89,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="GreedyRS.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab1.cpp">
+      <Filter>Source Files\Labs</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="GreedyRS.h">
       <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportUtils.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
