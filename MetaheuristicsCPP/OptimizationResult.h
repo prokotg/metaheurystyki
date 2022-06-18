@@ -31,4 +31,5 @@ namespace Optimizers
 		long long i_best_ffe;
 		double d_best_time;
 	};//class COptimizationResult
+
 }//namespace Optimizers
