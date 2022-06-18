@@ -16,16 +16,19 @@ namespace Optimizers
 	class CIndividual
 	{
 	public:
-		CIndividual(vector<TElement> *pvGenotype, IEvaluation<TElement> &cEvaluation, IMutation<TElement> &cMutation)
-			: c_evaluation(cEvaluation), c_mutation(cMutation)
+		CIndividual(vector<TElement>* pvGenotype, IEvaluation<TElement>& cEvaluation, IMutation<TElement>& cMutation)
+			: pv_genotype(pvGenotype), c_evaluation(cEvaluation), c_mutation(cMutation)
 		{
-
+			b_is_evaluated = false;
 		}//CIndividual(vector<TElement> *pvGenotype, IEvaluation<TElement> &cEvaluation, IMutation<TElement> &cMutation)
 
-		CIndividual(const CIndividual<TElement> &cOther)
+		CIndividual(const CIndividual<TElement>& cOther)
 			: c_evaluation(cOther.c_evaluation), c_mutation(cOther.c_mutation)
 		{
-			pv_genotype = new vector<double>(*cOther.pv_genotype);
+			pv_genotype = new vector<TElement>(*cOther.pv_genotype);
+
+			d_fitness = cOther.d_fitness;
+			b_is_evaluated = cOther.b_is_evaluated;
 		}//CIndividual(const CIndividual<TElement> &cOther)
 
 		~CIndividual()
@@ -56,14 +59,14 @@ namespace Optimizers
 			return b_successful_mutation;
 		}//bool bMutate()
 
-		vector<TElement> &vGetGenotype() { return *pv_genotype; }
+		vector<TElement>& vGetGenotype() { return *pv_genotype; }
 		double dGetFitness() { return d_fitness; }
 
 	private:
-		vector<TElement> *pv_genotype;
+		vector<TElement>* pv_genotype;
 
-		IEvaluation<TElement> &c_evaluation;
-		IMutation<TElement> &c_mutation;
+		IEvaluation<TElement>& c_evaluation;
+		IMutation<TElement>& c_mutation;
 
 		bool b_is_evaluated;
 		double d_fitness;

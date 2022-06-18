@@ -143,6 +143,7 @@
     <ClCompile Include="GreedyRS.cpp" />
     <ClCompile Include="Lab1.cpp" />
     <ClCompile Include="Lab2.cpp" />
+    <ClCompile Include="Lab4.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClInclude Include="BinaryGeneticAlgorithm.h" />
     <ClInclude Include="BinaryKnapsackGeneticAlgorithm.h" />

@@ -135,6 +135,9 @@
     <ClCompile Include="BinaryKnapsackIndividual.cpp">
       <Filter>Source Files\Optimizers</Filter>
     </ClCompile>
+    <ClCompile Include="Lab4.cpp">
+      <Filter>Source Files\Labs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StopCondition.h">
