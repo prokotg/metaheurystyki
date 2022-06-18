@@ -18,4 +18,4 @@ void report_to_file(std::ofstream& file, std::string run_name, int64_t gene_leng
 	file << endl;
 }
 
-void initialize_result_file(std::ofstream& ofs);
+void initialize_result_file(std::ofstream& ofs, std::string name);

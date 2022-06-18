@@ -2,7 +2,7 @@
 
 #include "RealMutations.h"
 #include "RealMutationES11Adaptation.h"
-
+#include <RealEvaluations.h>
 #include <list>
 
 using namespace std;
@@ -29,6 +29,25 @@ namespace Mutations
 		CRealOneFifthRuleMutationES11Adaptation(int iArchiveSize, double dModifier, CRealGaussianMutation &cMutation);
 
 		virtual void vAdapt(double dBeforeMutationValue, vector<double> &vBeforeMutationSolution, double dAfterMutationValue, vector<double> &vAfterMutationSolution);
+
+	private:
+		static const double d_ONE_FIFTH;
+
+		int i_archive_size;
+		double d_modifier;
+
+		int i_successes_counter;
+
+		list<bool> l_successes;
+	};//class CRealOneFifthRuleMutationES11Adaptation : public CRealNullRealMutationES11Adaptation
+
+
+	class CRealCustomMutationES11Adaptation : public CRealNullRealMutationES11Adaptation
+	{
+	public:
+		CRealCustomMutationES11Adaptation(int iArchiveSize, double dModifier, CRealGaussianMutation& cMutation, CRealEvaluation& cEvaluation);
+
+		virtual void vAdapt(double dBeforeMutationValue, vector<double>& vBeforeMutationSolution, double dAfterMutationValue, vector<double>& vAfterMutationSolution);
 
 	private:
 		static const double d_ONE_FIFTH;

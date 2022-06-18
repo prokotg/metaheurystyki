@@ -14,7 +14,6 @@ namespace Optimizers
 		CGreedyRS(IEvaluation<bool>& cEvaluation, IStopCondition& cStopCondition, mt19937& cRandomEngine, bool bShuffle, size_t iRepetitions);
 
 	private:
-		size_t iRepetitions;
 		bool b_run_iteration(long long iIterationNumber, clock_t tStartTime);
 		CBinaryRandomGenerator c_random_generation;
 		CGreedyAlgorithm c_greed_algorithm;

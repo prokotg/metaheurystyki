@@ -16,7 +16,7 @@ CBinaryOneMaxEvaluation::CBinaryOneMaxEvaluation(int iSize)
 
 }//CBinaryOneMaxEvaluation::CBinaryOneMaxEvaluation(int iSize)
 
-double CBinaryOneMaxEvaluation::d_evaluate(vector<bool> &vSolution)
+double CBinaryOneMaxEvaluation::d_evaluate(vector<bool>& vSolution)
 {
 	double d_value = 0;
 
@@ -33,12 +33,12 @@ double CBinaryOneMaxEvaluation::d_evaluate(vector<bool> &vSolution)
 
 
 CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue)
-	: CBinaryEvaluation(iBlockSize * iNumberOfBlocks, dMaxValue), i_block_size(iBlockSize), i_number_of_blocks(iNumberOfBlocks)
+	: CBinaryEvaluation(iBlockSize* iNumberOfBlocks, dMaxValue), i_block_size(iBlockSize), i_number_of_blocks(iNumberOfBlocks)
 {
 
 }//CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue)
 
-double CBinaryDeceptiveConcatenationEvaluation::d_evaluate(vector<bool> &vSolution)
+double CBinaryDeceptiveConcatenationEvaluation::d_evaluate(vector<bool>& vSolution)
 {
 	double d_value = 0;
 
@@ -64,7 +64,7 @@ double CBinaryDeceptiveConcatenationEvaluation::d_evaluate(vector<bool> &vSoluti
 
 
 CBinaryStandardDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
-	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize * iNumberOfBlocks)
+	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize* iNumberOfBlocks)
 {
 
 }//CBinaryStandardDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
@@ -87,7 +87,7 @@ double CBinaryStandardDeceptiveConcatenationEvaluation::d_evaluate(int iUnitatio
 
 
 CBinaryBimodalDeceptiveConcatenationEvaluation::CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
-	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize * iNumberOfBlocks / 2.0)
+	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize* iNumberOfBlocks / 2.0)
 {
 
 }//CBinaryBimodalDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
@@ -128,7 +128,7 @@ CBinaryIsingSpinGlassEvaluation::~CBinaryIsingSpinGlassEvaluation()
 	delete pc_p3_ising_spin_glass;
 }//CBinaryIsingSpinGlassEvaluation::~CBinaryIsingSpinGlassEvaluation()
 
-double CBinaryIsingSpinGlassEvaluation::d_evaluate(vector<bool> &vSolution)
+double CBinaryIsingSpinGlassEvaluation::d_evaluate(vector<bool>& vSolution)
 {
 	return pc_p3_ising_spin_glass->evaluate(vSolution);
 }//double CBinaryIsingSpinGlassEvaluation::d_evaluate(vector<bool> &vSolution)
@@ -152,7 +152,7 @@ CBinaryMax3SatEvaluation::~CBinaryMax3SatEvaluation()
 	delete pc_p3_max_sat;
 }//CBinaryMax3SatEvaluation::~CBinaryMax3SatEvaluation()
 
-double CBinaryMax3SatEvaluation::d_evaluate(vector<bool> &vSolution)
+double CBinaryMax3SatEvaluation::d_evaluate(vector<bool>& vSolution)
 {
 	return pc_p3_max_sat->evaluate(vSolution);
 }//double CBinaryMax3SatEvaluation::d_evaluate(vector<bool> &vSolution)
@@ -177,7 +177,105 @@ CBinaryNKLandscapesEvaluation::~CBinaryNKLandscapesEvaluation()
 	delete pc_p3_nk_landscapes;
 }//CBinaryNKLandscapesEvaluation::~CBinaryNKLandscapesEvaluation()
 
-double CBinaryNKLandscapesEvaluation::d_evaluate(vector<bool> &vSolution)
+double CBinaryNKLandscapesEvaluation::d_evaluate(vector<bool>& vSolution)
 {
 	return pc_p3_nk_landscapes->evaluate(vSolution);
 }//double CBinaryNKLandscapesEvaluation::d_evaluate(vector<bool> &vSolution)
+
+
+CBinaryKnapsackEvaluation::CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance)
+	: CBinaryEvaluation(0, 0)
+{
+	v_load(eInstance);
+}//CBinaryKnapsackEvaluation::CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance)
+
+double CBinaryKnapsackEvaluation::dCalculateWeight(vector<bool>& vSolution)
+{
+	double d_weight = 0;
+
+	for (int i = 0; i < iGetSize(); i++)
+	{
+		if (vSolution[i])
+		{
+			d_weight += v_weights[i];
+		}//if (vSolution[i])
+	}//for (int i = 0; i < iGetSize(); i++)
+
+	return d_weight;
+}//double CBinaryKnapsackEvaluation::dCalculateWeight(vector<bool> &vSolution)
+
+double CBinaryKnapsackEvaluation::d_evaluate(vector<bool>& vSolution)
+{
+	double d_value = 0;
+
+	for (int i = 0; i < iGetSize(); i++)
+	{
+		if (vSolution[i])
+		{
+			d_value += v_profits[i];
+		}//if (vSolution[i])
+	}//for (int i = 0; i < iGetSize(); i++)
+
+	return d_value;
+}//double CBinaryKnapsackEvaluation::d_evaluate(vector<bool> &vSolution)
+
+void CBinaryKnapsackEvaluation::v_load(EBinaryKnapsackInstance eInstance)
+{
+	SBinaryKnapsackInstanceFilePaths* pc_file_paths = SBinaryKnapsackInstanceFilePaths::pcCreate(eInstance);
+
+	v_load_definition_file(pc_file_paths->sDefinitionFilePath);
+	v_load_optimum_file(pc_file_paths->sOptimumFilePath);
+
+	delete pc_file_paths;
+}//void CBinaryKnapsackEvaluation::v_load(EBinaryKnapsackInstance eInstance)
+
+void CBinaryKnapsackEvaluation::v_load_definition_file(string& sDefinitionFilePath)
+{
+	ifstream f_definition_file(sDefinitionFilePath);
+
+	if (!f_definition_file)
+	{
+		throw invalid_argument(sDefinitionFilePath + " not found");
+	}//if (!f_definition_file)
+
+	int i_size;
+	f_definition_file >> i_size;
+	v_set_size(i_size);
+
+	f_definition_file >> d_capacity;
+
+	double d_profit, d_weight;
+
+	v_profits.clear();
+	v_profits.reserve((size_t)i_size);
+
+	v_weights.clear();
+	v_weights.reserve((size_t)i_size);
+
+	for (int i = 0; i < i_size; i++)
+	{
+		f_definition_file >> d_profit;
+		f_definition_file >> d_weight;
+
+		v_profits.push_back(d_profit);
+		v_weights.push_back(d_weight);
+	}//for (int i = 0; i < i_size; i++)
+
+	f_definition_file.close();
+}//void CBinaryKnapsackEvaluation::v_load_definition_file(string &sDefinitionFilePath)
+
+void CBinaryKnapsackEvaluation::v_load_optimum_file(string& sOptimumFilePath)
+{
+	ifstream f_optimum_file(sOptimumFilePath);
+
+	if (!f_optimum_file)
+	{
+		throw invalid_argument(sOptimumFilePath + " not found");
+	}//if (!f_optimum_file)
+
+	double d_max_value;
+	f_optimum_file >> d_max_value;
+	v_set_max_value(d_max_value);
+
+	f_optimum_file.close();
+}//void CBinaryKnapsackEvaluation::v_load_optimum_file(string &sOptimumFilePath)

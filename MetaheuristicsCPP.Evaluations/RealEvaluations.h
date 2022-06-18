@@ -19,29 +19,29 @@ namespace Evaluations
 	public:
 		CRealEvaluation(int iSize, double dMaxValue, double dLowerBound, double dUpperBound);
 
-		virtual IConstraint<double> &cGetConstraint() { return c_constraint; }
+		virtual IConstraint<double>& cGetConstraint() { return c_constraint; }
 
 	private:
-		 CRealBoundingBoxConstraint c_constraint;
+		CRealBoundingBoxConstraint c_constraint;
 	};//class CBinaryEvaluation : public IEvaluation<bool>
 
 
 	class CRealHorizontalScalingEvaluation : public CEvaluation<double>
 	{
 	public:
-		CRealHorizontalScalingEvaluation(IEvaluation<double> &cRealEvaluation, vector<double> &vFactors);
+		CRealHorizontalScalingEvaluation(IEvaluation<double>& cRealEvaluation, vector<double>& vFactors);
 
 		virtual ~CRealHorizontalScalingEvaluation();
 
-		virtual IConstraint<double> &cGetConstraint() { return *pc_constraint; }
+		virtual IConstraint<double>& cGetConstraint() { return *pc_constraint; }
 
 	protected:
-		virtual double d_evaluate(vector<double> &vSolution);
+		virtual double d_evaluate(vector<double>& vSolution);
 
 	private:
-		CRealBoundingBoxConstraint *pc_constraint;
+		CRealBoundingBoxConstraint* pc_constraint;
 
-		IEvaluation<double> &c_real_evaluation;
+		IEvaluation<double>& c_real_evaluation;
 		vector<double> v_factors;
 	};//class CRealHorizontalScalingEvaluation : public CEvaluation<double>
 
@@ -49,15 +49,15 @@ namespace Evaluations
 	class CRealStepEvaluation : public CEvaluation<double>
 	{
 	public:
-		CRealStepEvaluation(IEvaluation<double> &cRealEvaluation, vector<int> &vStepSizes);
+		CRealStepEvaluation(IEvaluation<double>& cRealEvaluation, vector<int>& vStepSizes);
 
-		virtual IConstraint<double> &cGetConstraint() { return c_real_evaluation.cGetConstraint(); }
+		virtual IConstraint<double>& cGetConstraint() { return c_real_evaluation.cGetConstraint(); }
 
 	protected:
-		virtual double d_evaluate(vector<double> &vSolution);
+		virtual double d_evaluate(vector<double>& vSolution);
 
 	private:
-		IEvaluation<double> &c_real_evaluation;
+		IEvaluation<double>& c_real_evaluation;
 		vector<int> v_step_sizes;
 	};//class CRealStepEvaluation : public CEvaluation<double>
 
@@ -68,7 +68,7 @@ namespace Evaluations
 		CRealSphereEvaluation(int iSize);
 
 	protected:
-		virtual double d_evaluate(vector<double> &vSolution);
+		virtual double d_evaluate(vector<double>& vSolution);
 	};//class CRealSphereEvaluation : public CRealEvaluation
 
 
@@ -80,8 +80,8 @@ namespace Evaluations
 		virtual ~CRealSphere10Evaluation();
 
 	private:
-		CRealSphereEvaluation *pc_sphere_evaluation;
-		CVerticalScalingEvaluation<double> *pc_vertical_scaling_evaluation;
+		CRealSphereEvaluation* pc_sphere_evaluation;
+		CVerticalScalingEvaluation<double>* pc_vertical_scaling_evaluation;
 	};//class CRealSphere10Evaluation : public IEvaluation<double>
 
 
@@ -93,8 +93,8 @@ namespace Evaluations
 		virtual ~CRealEllipsoidEvaluation();
 
 	private:
-		CRealSphereEvaluation *pc_sphere_evaluation;
-		CRealHorizontalScalingEvaluation *pc_horizontal_scaling_evaluation;
+		CRealSphereEvaluation* pc_sphere_evaluation;
+		CRealHorizontalScalingEvaluation* pc_horizontal_scaling_evaluation;
 	};//class CRealSphere10Evaluation : public IEvaluation<double>
 
 
@@ -106,8 +106,8 @@ namespace Evaluations
 		virtual ~CRealStep2SphereEvaluation();
 
 	private:
-		CRealSphereEvaluation *pc_sphere_evaluation;
-		CRealStepEvaluation *pc_step_evaluation;
+		CRealSphereEvaluation* pc_sphere_evaluation;
+		CRealStepEvaluation* pc_step_evaluation;
 	};//class CRealSphere10Evaluation : public IEvaluation<double>
 
 
@@ -117,7 +117,7 @@ namespace Evaluations
 		CRealRastriginEvaluation(int iSize);
 
 	protected:
-		virtual double d_evaluate(vector<double> &vSolution);
+		virtual double d_evaluate(vector<double>& vSolution);
 	};//class CRealRastriginEvaluation : public CRealEvaluation
 
 
@@ -127,6 +127,6 @@ namespace Evaluations
 		CRealAckleyEvaluation(int iSize);
 
 	protected:
-		virtual double d_evaluate(vector<double> &vSolution);
+		virtual double d_evaluate(vector<double>& vSolution);
 	};//class CRealAckleyEvaluation : public CRealEvaluation
 }//namespace Evaluations

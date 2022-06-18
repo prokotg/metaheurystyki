@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryEvaluationInstances.cpp" />
     <ClCompile Include="BinaryEvaluations.cpp" />
     <ClCompile Include="P3Configuration.cpp" />
     <ClCompile Include="P3Evaluation.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryConstraints.h" />
+    <ClInclude Include="BinaryEvaluationInstances.h" />
     <ClInclude Include="BinaryEvaluations.h" />
     <ClInclude Include="Constraint.h" />
     <ClInclude Include="Evaluation.h" />

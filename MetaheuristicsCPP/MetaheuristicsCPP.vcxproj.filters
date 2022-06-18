@@ -46,6 +46,21 @@
     <Filter Include="Source Files\Labs">
       <UniqueIdentifier>{5ef2f6bc-ce68-4389-b37a-5765b29b7e0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Labs">
+      <UniqueIdentifier>{72afe7cd-e534-4d0e-8205-9685f15a13f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Selections">
+      <UniqueIdentifier>{e0b9e862-484b-4b45-8f4c-a451dba1b105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Crossovers">
+      <UniqueIdentifier>{c44204ff-fb6c-438b-9199-8d45dbe5678c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Crossovers">
+      <UniqueIdentifier>{750aa57e-ed07-4cda-8e1c-dcd60c3be0de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Selections">
+      <UniqueIdentifier>{415b9319-6468-4ad9-bd3c-42a8db8a013b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -98,6 +113,27 @@
     </ClCompile>
     <ClCompile Include="ReportUtils.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab2.cpp">
+      <Filter>Source Files\Labs</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryKnapsackSelection.cpp">
+      <Filter>Source Files\Selections</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryKnapsackSelections.cpp">
+      <Filter>Source Files\Selections</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryCrossovers.cpp">
+      <Filter>Source Files\Crossovers</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryGeneticAlgorithm.cpp">
+      <Filter>Source Files\Optimizers</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryKnapsackGeneticAlgorithm.cpp">
+      <Filter>Source Files\Optimizers</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryKnapsackIndividual.cpp">
+      <Filter>Source Files\Optimizers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,11 +206,38 @@
     <ClInclude Include="GreedyRS.h">
       <Filter>Header Files\Optimizers</Filter>
     </ClInclude>
-    <ClInclude Include="Lab1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ReportUtils.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Labs.h">
+      <Filter>Header Files\Labs</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryCrossovers.h">
+      <Filter>Header Files\Crossovers</Filter>
+    </ClInclude>
+    <ClInclude Include="Crossover.h">
+      <Filter>Header Files\Crossovers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryGeneticAlgorithm.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryKnapsackGeneticAlgorithm.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryKnapsackIndividual.h">
+      <Filter>Header Files\Optimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Selection.h">
+      <Filter>Header Files\Selections</Filter>
+    </ClInclude>
+    <ClInclude Include="Selections.h">
+      <Filter>Header Files\Selections</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryKnapsackSelection.h">
+      <Filter>Header Files\Selections</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryKnapsackSelections.h">
+      <Filter>Header Files\Selections</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

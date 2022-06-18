@@ -21,23 +21,35 @@ void CRealEvolutionStrategy11::v_initialize(clock_t tStartTime)
 
 bool CRealEvolutionStrategy11::b_run_iteration(long long iIterationNumber, clock_t tStartTime)
 {
-	CRealGaussianMutation &c_mutation = c_mutation_adaptation.cGetMutation();
+	//CRealGaussianMutation &c_mutation = c_mutation_adaptation.cGetMutation();
+
+	//vector<double> v_candidate_solution(pcGetResult()->vGetBestSolution());
+
+	//c_mutation.bMutate(v_candidate_solution);
+	//double d_candidate_value = c_evaluation.dEvaluate(v_candidate_solution);
+	//if (nfails > 5) {
+	//	auto v = isNoisy(pcGetResult()->vGetBestSolution());
+	//	double sum = std::accumulate(v.begin(), v.end(), 0.0);
+	//	double mean = sum / v.size();
+	//	std::cout << mean << std::endl;
+	//	if (mean > 0.1) {
+	//		std::cout << "triggered" << std::endl;
+	//		vector<double> v_initial_solution((size_t)c_evaluation.iGetSize());
+	//	}
+
+	//}
+	//c_mutation_adaptation.vAdapt(pcGetResult()->dGetBestValue(), pcGetResult()->vGetBestSolution(), d_candidate_value, v_candidate_solution);
+
+	//return b_check_new_best(v_candidate_solution, d_candidate_value);
+
+
+	CRealGaussianMutation& c_mutation = c_mutation_adaptation.cGetMutation();
 
 	vector<double> v_candidate_solution(pcGetResult()->vGetBestSolution());
 
 	c_mutation.bMutate(v_candidate_solution);
 	double d_candidate_value = c_evaluation.dEvaluate(v_candidate_solution);
-	if (nfails > 5) {
-		auto v = isNoisy(pcGetResult()->vGetBestSolution());
-		double sum = std::accumulate(v.begin(), v.end(), 0.0);
-		double mean = sum / v.size();
-		std::cout << mean << std::endl;
-		if (mean > 0.1) {
-			std::cout << "triggered" << std::endl;
-			vector<double> v_initial_solution((size_t)c_evaluation.iGetSize());
-		}
 
-	}
 	c_mutation_adaptation.vAdapt(pcGetResult()->dGetBestValue(), pcGetResult()->vGetBestSolution(), d_candidate_value, v_candidate_solution);
 
 	return b_check_new_best(v_candidate_solution, d_candidate_value);

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BinaryEvaluationInstances.h"
 #include "BinaryConstraints.h"
 #include "Constraint.h"
 #include "Evaluation.h"
@@ -7,7 +8,9 @@
 #include "P3Evaluation.h"
 
 #include <cmath>
+#include <fstream>
 #include <string>
+#include <vector>
 
 using namespace Constraints;
 
@@ -18,7 +21,7 @@ namespace Evaluations
 	public:
 		CBinaryEvaluation(int iSize, double dMaxValue);
 
-		virtual IConstraint<bool> &cGetConstraint() { return c_constraint; }
+		virtual IConstraint<bool>& cGetConstraint() { return c_constraint; }
 
 	private:
 		CBinaryNoConstraint c_constraint;
@@ -31,7 +34,7 @@ namespace Evaluations
 		CBinaryOneMaxEvaluation(int iSize);
 
 	protected:
-		virtual double d_evaluate(vector<bool> &vSolution);
+		virtual double d_evaluate(vector<bool>& vSolution);
 	};//class CBinaryOneMaxEvaluation : public CBinaryEvaluation
 
 
@@ -41,7 +44,7 @@ namespace Evaluations
 		CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue);
 
 	protected:
-		virtual double d_evaluate(vector<bool> &vSolution);
+		virtual double d_evaluate(vector<bool>& vSolution);
 
 		virtual double d_evaluate(int iUnitation) = 0;
 
@@ -80,10 +83,10 @@ namespace Evaluations
 		virtual ~CBinaryIsingSpinGlassEvaluation();
 
 	protected:
-		virtual double d_evaluate(vector<bool> &vSolution);
+		virtual double d_evaluate(vector<bool>& vSolution);
 
 	private:
-		IsingSpinGlass *pc_p3_ising_spin_glass;
+		IsingSpinGlass* pc_p3_ising_spin_glass;
 	};//class CBinaryIsingSpinGlassEvaluation : public CBinaryEvaluation
 
 
@@ -95,10 +98,10 @@ namespace Evaluations
 		virtual ~CBinaryMax3SatEvaluation();
 
 	protected:
-		virtual double d_evaluate(vector<bool> &vSolution);
+		virtual double d_evaluate(vector<bool>& vSolution);
 
 	private:
-		MAXSAT *pc_p3_max_sat;
+		MAXSAT* pc_p3_max_sat;
 	};//class CBinaryMax3SatEvaluation : public CBinaryEvaluation
 
 
@@ -110,9 +113,34 @@ namespace Evaluations
 		virtual ~CBinaryNKLandscapesEvaluation();
 
 	protected:
-		virtual double d_evaluate(vector<bool> &vSolution);
+		virtual double d_evaluate(vector<bool>& vSolution);
 
 	private:
-		NearestNeighborNK *pc_p3_nk_landscapes;
+		NearestNeighborNK* pc_p3_nk_landscapes;
 	};//class CBinaryNKLandscapesEvaluation : public CBinaryEvaluation
+
+
+	class CBinaryKnapsackEvaluation : public CBinaryEvaluation
+	{
+	public:
+		CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance);
+
+		double dCalculateWeight(vector<bool>& vSolution);
+
+		vector<double>& vGetWeights() { return v_weights; }
+		vector<double>& vGetProfits() { return v_profits; }
+		double dGetCapacity() { return d_capacity; }
+
+	protected:
+		virtual double d_evaluate(vector<bool>& vSolution);
+
+	private:
+		void v_load(EBinaryKnapsackInstance eInstance);
+		void v_load_definition_file(string& sDefinitionFilePath);
+		void v_load_optimum_file(string& sOptimumFilePath);
+
+		vector<double> v_weights;
+		vector<double> v_profits;
+		double d_capacity;
+	};//class CBinaryKnapsackEvaluation : public CBinaryEvaluation
 }//namespace Evaluations

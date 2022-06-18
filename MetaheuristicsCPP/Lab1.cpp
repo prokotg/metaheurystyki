@@ -1,4 +1,4 @@
-#include "Lab1.h"
+#include "Labs.h"
 #include "ReportUtils.h"
 #include "BinaryRandomSearch.h"
 #include "GreedyRS.h"
@@ -177,21 +177,21 @@ COptimizationResult<bool> v_lab_1_nk_landscapes_greedy(mt19937& cRandomEngine, i
 	return *c_random_search.pcGetResult();
 }//void v_lab_1_nk_landscapes(mt19937 &cRandomEngine)
 
-void run_lab_1_rs_greedy(ofstream& myfile) {
+void run_lab_1_rs_greedy(ofstream& myfile, size_t reps = 1) {
 
 
 	random_device c_seed_generator;
 	mt19937 c_random_engine(c_seed_generator());
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
-			auto res = v_lab_1_one_max_greedy(c_random_engine, gen_len);
+			auto res = v_lab_1_one_max_greedy(c_random_engine, gen_len, reps);
 			report_to_file<bool>(myfile, std::string("one_max_greedy"), gen_len, run_id, res);
 		}
 	}
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len);
+			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
 			report_to_file<bool>(myfile, std::string("standard_deceptive_concatenation_greedy"), gen_len, run_id, res);
 		}
 	}
@@ -199,14 +199,14 @@ void run_lab_1_rs_greedy(ofstream& myfile) {
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 10, 50 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len);
+			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
 			report_to_file<bool>(myfile, std::string("bimodal_deceptive_concatenation_greedy"), gen_len, run_id, res);
 		}
 	}
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 25, 49, 100, 484 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len);
+			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
 			report_to_file<bool>(myfile, std::string("ising_spin_glass_greedy"), gen_len, run_id, res);
 		}
 	}
@@ -214,7 +214,7 @@ void run_lab_1_rs_greedy(ofstream& myfile) {
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 10, 50, 100, 200 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len);
+			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
 			report_to_file<bool>(myfile, std::string("nk_landscapes_greedy"), gen_len, run_id, res);
 		}
 	}
@@ -224,10 +224,12 @@ void run_lab_1_rs_greedy(ofstream& myfile) {
 void run_lab_1() {
 
 	ofstream myfile;
-	initialize_result_file(myfile);
+	initialize_result_file(myfile, std::string("lab1"));
 	std::cout << "Calculating random search" << std::endl;
 	run_lab_1_rs(myfile);
 	std::cout << "Calculating greedy random search" << std::endl;
-	run_lab_1_rs_greedy(myfile);
+	run_lab_1_rs_greedy(myfile, 1);
+	std::cout << "Calculating greedy random search , reps=5" << std::endl;
+	run_lab_1_rs_greedy(myfile, 5);
 	myfile.close();
 }

@@ -128,20 +128,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryCrossovers.h" />
     <ClInclude Include="BinaryGenerators.h" />
+    <ClCompile Include="BinaryCrossovers.cpp" />
     <ClCompile Include="BinaryGenerators.cpp" />
+    <ClCompile Include="BinaryGeneticAlgorithm.cpp" />
+    <ClCompile Include="BinaryKnapsackGeneticAlgorithm.cpp" />
+    <ClCompile Include="BinaryKnapsackIndividual.cpp" />
+    <ClCompile Include="BinaryKnapsackSelection.cpp" />
+    <ClCompile Include="BinaryKnapsackSelections.cpp" />
     <ClCompile Include="BinaryMutations.cpp" />
     <ClCompile Include="BinaryRandomSearch.cpp" />
     <ClCompile Include="GreedyAlgorithm.cpp" />
     <ClCompile Include="GreedyRS.cpp" />
     <ClCompile Include="Lab1.cpp" />
+    <ClCompile Include="Lab2.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClInclude Include="BinaryGeneticAlgorithm.h" />
+    <ClInclude Include="BinaryKnapsackGeneticAlgorithm.h" />
+    <ClInclude Include="BinaryKnapsackIndividual.h" />
+    <ClInclude Include="BinaryKnapsackSelection.h" />
+    <ClInclude Include="BinaryKnapsackSelections.h" />
     <ClInclude Include="BinaryMutations.h" />
     <ClInclude Include="BinaryRandomSearch.h" />
+    <ClInclude Include="Crossover.h" />
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="GreedyRS.h" />
     <ClInclude Include="Individual.h" />
-    <ClInclude Include="Lab1.h" />
+    <ClInclude Include="Labs.h" />
     <ClInclude Include="Mutation.h" />
     <ClInclude Include="RealCMAES.h" />
     <ClInclude Include="RealMutationES11Adaptation.h" />
@@ -160,6 +174,8 @@
     <ClInclude Include="RealMutationES11Adaptations.h" />
     <ClInclude Include="RealRandomSearch.h" />
     <ClInclude Include="ReportUtils.h" />
+    <ClInclude Include="Selection.h" />
+    <ClInclude Include="Selections.h" />
     <ClInclude Include="VectorUtils.h" />
   </ItemGroup>
   <ItemGroup>
