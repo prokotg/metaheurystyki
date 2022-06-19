@@ -138,6 +138,9 @@
     <ClCompile Include="Lab4.cpp">
       <Filter>Source Files\Labs</Filter>
     </ClCompile>
+    <ClCompile Include="Lab5.cpp">
+      <Filter>Source Files\Labs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StopCondition.h">
@@ -242,5 +245,70 @@
     <ClInclude Include="BinaryKnapsackSelections.h">
       <Filter>Header Files\Selections</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_100_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_200_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_500_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_1000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_2000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_5000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_10000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_100_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_200_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_500_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_1000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_2000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_5000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_10000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_100_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_200_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_500_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_1000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_2000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_5000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_10000_1000_1">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

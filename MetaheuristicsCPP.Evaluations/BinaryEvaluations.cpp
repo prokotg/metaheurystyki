@@ -2,7 +2,6 @@
 
 using namespace Evaluations;
 
-
 CBinaryEvaluation::CBinaryEvaluation(int iSize, double dMaxValue)
 	: CEvaluation<bool>(iSize, dMaxValue)
 {
@@ -183,10 +182,11 @@ double CBinaryNKLandscapesEvaluation::d_evaluate(vector<bool>& vSolution)
 }//double CBinaryNKLandscapesEvaluation::d_evaluate(vector<bool> &vSolution)
 
 
-CBinaryKnapsackEvaluation::CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance)
-	: CBinaryEvaluation(0, 0)
+CBinaryKnapsackEvaluation::CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance, EEvolutionaryPressure pressuremode)
+	: CBinaryEvaluation(0, 0), EPressureMode(pressuremode)
 {
 	v_load(eInstance);
+
 }//CBinaryKnapsackEvaluation::CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance)
 
 double CBinaryKnapsackEvaluation::dCalculateWeight(vector<bool>& vSolution)

@@ -16,6 +16,14 @@ using namespace Constraints;
 
 namespace Evaluations
 {
+	enum class EEvolutionaryPressure
+	{
+		NONE,
+		PUNISHABLE,
+		BALDWIN,
+		LAMARCK
+	};
+
 	class CBinaryEvaluation : public CEvaluation<bool>
 	{
 	public:
@@ -123,18 +131,20 @@ namespace Evaluations
 	class CBinaryKnapsackEvaluation : public CBinaryEvaluation
 	{
 	public:
-		CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance);
+		CBinaryKnapsackEvaluation(EBinaryKnapsackInstance eInstance, EEvolutionaryPressure pressuremode);
 
 		double dCalculateWeight(vector<bool>& vSolution);
 
 		vector<double>& vGetWeights() { return v_weights; }
 		vector<double>& vGetProfits() { return v_profits; }
 		double dGetCapacity() { return d_capacity; }
+		EEvolutionaryPressure EGetPressureMode() { return EPressureMode; }
 
 	protected:
 		virtual double d_evaluate(vector<bool>& vSolution);
 
 	private:
+		EEvolutionaryPressure EPressureMode;
 		void v_load(EBinaryKnapsackInstance eInstance);
 		void v_load_definition_file(string& sDefinitionFilePath);
 		void v_load_optimum_file(string& sOptimumFilePath);
@@ -143,4 +153,6 @@ namespace Evaluations
 		vector<double> v_profits;
 		double d_capacity;
 	};//class CBinaryKnapsackEvaluation : public CBinaryEvaluation
+
+
 }//namespace Evaluations

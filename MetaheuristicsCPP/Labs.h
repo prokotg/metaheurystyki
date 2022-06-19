@@ -5,5 +5,6 @@ void run_lab_1();
 void run_lab_2();
 
 void run_lab_4();
+void run_lab_5();
 
 

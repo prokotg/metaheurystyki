@@ -42,5 +42,29 @@ void report_to_file_ga(std::ofstream& file,
 	file << endl;
 }
 
+
+template <typename TElement>
+void report_to_file_knapsack(std::ofstream& file,
+	std::string evpressure,
+	float pcross,
+	float pmut,
+	bool punishable,
+	int64_t pop_size,
+	int64_t run_id,
+	COptimizationResult<TElement>& cOptimizationResult) {
+
+
+
+	file << evpressure << ",";
+	file << pcross << "," << pmut << "," << pop_size << "," << punishable << ",";
+	file << "," << run_id << ",";
+	file << cOptimizationResult.dGetBestValue() << ",";
+	file << cOptimizationResult.dGetBestTime() << ",";
+	file << cOptimizationResult.iGetBestIteration() << ",";
+	file << cOptimizationResult.iGetBestFFE() << ",";
+	file << endl;
+}
+
 void initialize_result_file(std::ofstream& ofs, std::string name);
 void initialize_result_file_ga(std::ofstream& ofs, std::string name);
+void initialize_result_file_knapsack(std::ofstream& ofs, std::string name);

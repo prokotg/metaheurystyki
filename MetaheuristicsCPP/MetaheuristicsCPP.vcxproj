@@ -144,6 +144,7 @@
     <ClCompile Include="Lab1.cpp" />
     <ClCompile Include="Lab2.cpp" />
     <ClCompile Include="Lab4.cpp" />
+    <ClCompile Include="Lab5.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClInclude Include="BinaryGeneticAlgorithm.h" />
     <ClInclude Include="BinaryKnapsackGeneticAlgorithm.h" />
@@ -194,6 +195,29 @@
     <ProjectReference Include="..\MetaheuristicsCPP.Evaluations\MetaheuristicsCPP.Evaluations.vcxproj">
       <Project>{57da5d67-839e-4b20-8434-e0daac632f0b}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_10000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_1000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_100_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_2000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_200_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_5000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_1_500_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_10000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_1000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_100_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_2000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_200_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_5000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_2_500_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_10000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_1000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_100_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_2000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_200_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_5000_1000_1" />
+    <None Include="..\MetaheuristicsCPP.Evaluations\EvaluationsInputs\instances_01_KP\large_scale-optimum\knapPI_3_500_1000_1" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

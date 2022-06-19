@@ -22,12 +22,16 @@ namespace Optimizers
 
 		double dEvaluate();
 
+
+
 		bool bMutate();
 
 		vector<bool> &vGetGenotype() { return *pv_genotype; }
 		double dGetFitness() { return d_fitness; }
 
 	private:
+		void dPunish();
+		void dOptimize(bool keep);
 		vector<bool> *pv_genotype;
 
 		CBinaryKnapsackEvaluation &c_binary_knapsack_evaluation;
@@ -36,4 +40,9 @@ namespace Optimizers
 		bool b_is_evaluated;
 		double d_fitness;
 	};//class CBinaryKnapsackIndividual
+
+
+
+
+
 }//namespace Optimizers

@@ -27,7 +27,8 @@ int main()
 	//run_lab_1();
 	//run_lab_2();
 	// ########################## RAPORT 2 ########################
-	run_lab_4();
+	//run_lab_4();
+	run_lab_5();
 	system("PAUSE");
 	return 0;
 }//int main()

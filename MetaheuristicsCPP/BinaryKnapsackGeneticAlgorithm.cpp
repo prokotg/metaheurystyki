@@ -128,3 +128,18 @@ CBinaryKnapsackIndividual * CBinaryKnapsackGeneticAlgorithm::pc_create_individua
 
 	return new CBinaryKnapsackIndividual(pvGenotype, c_binary_knapsack_evaluation, c_mutation);
 }//CBinaryKnapsackIndividual * CBinaryKnapsackGeneticAlgorithm::pc_create_individual(vector<bool> *pvGenotype)
+
+std::tuple<size_t, float> CBinaryKnapsackGeneticAlgorithm::count_ill_solutions() {
+	std::vector<Optimizers::CBinaryKnapsackIndividual*>::iterator iter, end;
+	size_t count = 0;
+	float acc = 0;
+	for (iter = pv_population->begin(), end = pv_population->end(); iter != end; ++iter) {
+		CBinaryKnapsackIndividual ind = *(*iter);
+		float ind_weight = c_binary_knapsack_evaluation.dCalculateWeight(ind.vGetGenotype());
+		if (ind_weight > c_binary_knapsack_evaluation.dGetCapacity()) {
+			++count;
+			acc += (ind_weight - c_binary_knapsack_evaluation.dGetCapacity()) ;
+		}
+	}
+	return std::make_pair(count, acc / count);
+}

@@ -28,10 +28,38 @@ double CBinaryKnapsackIndividual::dEvaluate()
 	{
 		d_fitness = c_binary_knapsack_evaluation.dEvaluate(*pv_genotype);
 		b_is_evaluated = true;
+		if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::PUNISHABLE) {
+			dPunish();
+		} 
+		else if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::LAMARCK) {
+			dOptimize(true);
+		}
+		else if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::BALDWIN) {
+			dOptimize(true);
+		}
 	}//if (!b_is_evaluated)
 
 	return dGetFitness();
-}//double CBinaryKnapsackIndividual::dEvaluate()
+}
+
+void Optimizers::CBinaryKnapsackIndividual::dPunish()
+{
+	auto weight = c_binary_knapsack_evaluation.dCalculateWeight(*pv_genotype);
+	auto cap = c_binary_knapsack_evaluation.dGetCapacity();
+	if (weight > cap) {
+		float rep = (weight / cap) - 1.0;
+		if (rep > 0.3) {
+			rep = 1;
+		}
+		d_fitness *=  (1 -  rep);
+
+	}
+
+}
+void Optimizers::CBinaryKnapsackIndividual::dOptimize(bool keep)
+{
+}
+//double CBinaryKnapsackIndividual::dEvaluate()
 
 bool CBinaryKnapsackIndividual::bMutate()
 {

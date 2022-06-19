@@ -35,7 +35,7 @@ namespace Optimizers
 			int iPopulationSize);
 
 		virtual ~CBinaryKnapsackGeneticAlgorithm();
-
+		std::tuple<size_t, float> count_ill_solutions();
 	protected:
 		virtual void v_initialize(clock_t tStartTime);
 		virtual bool b_run_iteration(long long iIterationNumber, clock_t tStartTime);
@@ -50,6 +50,7 @@ namespace Optimizers
 		bool b_check_new_best(bool bOnlyImprovements = true);
 
 		CBinaryKnapsackIndividual *pc_create_individual(vector<bool> *pvGenotype = nullptr);
+
 
 		CBinaryKnapsackEvaluation &c_binary_knapsack_evaluation;
 
