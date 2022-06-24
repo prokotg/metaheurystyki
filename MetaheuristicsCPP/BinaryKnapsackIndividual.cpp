@@ -26,17 +26,18 @@ double CBinaryKnapsackIndividual::dEvaluate()
 {
 	if (!b_is_evaluated)
 	{
+		if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::LAMARCK) {
+			dOptimize(true);
+		}
+		else if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::BALDWIN) {
+			dOptimize(false);
+		}
 		d_fitness = c_binary_knapsack_evaluation.dEvaluate(*pv_genotype);
 		b_is_evaluated = true;
 		if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::PUNISHABLE) {
 			dPunish();
 		} 
-		else if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::LAMARCK) {
-			dOptimize(true);
-		}
-		else if (c_binary_knapsack_evaluation.EGetPressureMode() == Evaluations::EEvolutionaryPressure::BALDWIN) {
-			dOptimize(true);
-		}
+
 	}//if (!b_is_evaluated)
 
 	return dGetFitness();
@@ -58,6 +59,55 @@ void Optimizers::CBinaryKnapsackIndividual::dPunish()
 }
 void Optimizers::CBinaryKnapsackIndividual::dOptimize(bool keep)
 {
+	auto weight = c_binary_knapsack_evaluation.dCalculateWeight(*pv_genotype);
+	auto cap = c_binary_knapsack_evaluation.dGetCapacity();
+	auto difference = weight - cap;
+	vector<bool>* new_genotype = new vector<bool>;
+	if (difference > 0) {
+		// too much load, release some
+		auto buffer = difference;
+		
+		*new_genotype = *pv_genotype;
+		std::vector<int> v(pv_genotype->size());
+		std::iota(v.begin(), v.end(), 0);
+		std::random_shuffle(v.begin(), v.end());
+		for (auto idx : v) {
+			if (new_genotype->at(idx)) {
+				new_genotype->at(idx) = !new_genotype->at(idx);
+				auto item_weight = c_binary_knapsack_evaluation.vGetWeights()[idx];
+				buffer -= item_weight;
+			}
+			if (buffer <= 0) {
+				break;
+			}
+		}
+	
+	}
+	else if (difference < 0) {
+		// you can load some more
+		auto buffer = difference;
+		*new_genotype = *pv_genotype;
+		std::vector<int> v(pv_genotype->size());
+		std::iota(v.begin(), v.end(), 0);
+		std::random_shuffle(v.begin(), v.end());
+		for (auto idx : v) {
+			if (!new_genotype->at(idx)) {
+				auto item_weight = c_binary_knapsack_evaluation.vGetWeights()[idx];
+				if (-item_weight < buffer) {
+					continue;
+				}
+				new_genotype->at(idx) = !new_genotype->at(idx);
+				
+				buffer += item_weight;
+			}
+
+		}
+
+	}
+
+	if (keep) {
+		pv_genotype = new_genotype;
+	}
 }
 //double CBinaryKnapsackIndividual::dEvaluate()
 

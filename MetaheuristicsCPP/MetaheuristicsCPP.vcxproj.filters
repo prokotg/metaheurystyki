@@ -141,6 +141,9 @@
     <ClCompile Include="Lab5.cpp">
       <Filter>Source Files\Labs</Filter>
     </ClCompile>
+    <ClCompile Include="Lab6.cpp">
+      <Filter>Source Files\Labs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StopCondition.h">

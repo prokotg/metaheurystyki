@@ -169,6 +169,7 @@
     <ClCompile Include="RealMutations.cpp" />
     <ClCompile Include="RealRandomSearch.cpp" />
     <ClCompile Include="ReportUtils.cpp" />
+    <ClCompile Include="Lab6.cpp" />
     <ClCompile Include="StopCondition.cpp" />
     <ClCompile Include="StopConditions.cpp" />
     <ClCompile Include="TimeUtils.cpp" />

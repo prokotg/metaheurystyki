@@ -17,6 +17,10 @@ namespace Optimizers
 	public:
 		CBinaryKnapsackIndividual(vector<bool> *pvGenotype, CBinaryKnapsackEvaluation &cBinaryKnapsackEvaluation, IMutation<bool> &cMutation);
 		CBinaryKnapsackIndividual(const CBinaryKnapsackIndividual &cOther);
+		friend bool operator <( CBinaryKnapsackIndividual const & lhs,  CBinaryKnapsackIndividual const & rhs)
+		{
+			return lhs.d_fitness < rhs.d_fitness;
+		}
 
 		~CBinaryKnapsackIndividual();
 
