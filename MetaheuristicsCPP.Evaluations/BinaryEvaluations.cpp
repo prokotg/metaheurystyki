@@ -1,4 +1,5 @@
 #include "BinaryEvaluations.h"
+#include <cmath>
 
 using namespace Evaluations;
 
@@ -31,9 +32,16 @@ double CBinaryOneMaxEvaluation::d_evaluate(vector<bool>& vSolution)
 }//double CBinaryOneMaxEvaluation::d_evaluate(vector<bool> &cCoding)
 
 
-CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue)
+CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue, bool randomize)
 	: CBinaryEvaluation(iBlockSize* iNumberOfBlocks, dMaxValue), i_block_size(iBlockSize), i_number_of_blocks(iNumberOfBlocks)
 {
+	order = std::vector<size_t>(iBlockSize * iNumberOfBlocks);
+	std:iota(order.begin(), order.end(), 0);
+	if (randomize) {
+		std::random_device rd;
+		std::mt19937 g(rd());
+		std::shuffle(order.begin(), order.end(), g);
+	}
 
 }//CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue)
 
@@ -49,7 +57,8 @@ double CBinaryDeceptiveConcatenationEvaluation::d_evaluate(vector<bool>& vSoluti
 
 		for (int j = 0; j < i_block_size; j++)
 		{
-			if (vSolution[i * i_block_size + j])
+			size_t index = order[i * i_block_size + j];
+			if (vSolution[index])
 			{
 				i_unitation++;
 			}//if (vSolution[i * i_block_size + j])
@@ -62,8 +71,8 @@ double CBinaryDeceptiveConcatenationEvaluation::d_evaluate(vector<bool>& vSoluti
 }//double CBinaryDeceptiveConcatenationEvaluation::d_evaluate(vector<bool> &vSolution)
 
 
-CBinaryStandardDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
-	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize* iNumberOfBlocks)
+CBinaryStandardDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize)
+	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize* iNumberOfBlocks, randomize)
 {
 
 }//CBinaryStandardDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
@@ -85,8 +94,8 @@ double CBinaryStandardDeceptiveConcatenationEvaluation::d_evaluate(int iUnitatio
 }//double CBinaryStandardDeceptiveConcatenationEvaluation::d_evaluate(int iUnitation)
 
 
-CBinaryBimodalDeceptiveConcatenationEvaluation::CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
-	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize* iNumberOfBlocks / 2.0)
+CBinaryBimodalDeceptiveConcatenationEvaluation::CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize)
+	: CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iBlockSize* iNumberOfBlocks / 2.0, randomize)
 {
 
 }//CBinaryBimodalDeceptiveConcatenationEvaluation::CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks)
@@ -279,3 +288,25 @@ void CBinaryKnapsackEvaluation::v_load_optimum_file(string& sOptimumFilePath)
 
 	f_optimum_file.close();
 }//void CBinaryKnapsackEvaluation::v_load_optimum_file(string &sOptimumFilePath)
+
+Evaluations::CBinaryStandardStepDeceptiveConcatenationEvaluation::CBinaryStandardStepDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, int step, bool randomize):
+	CBinaryDeceptiveConcatenationEvaluation(iBlockSize, iNumberOfBlocks, iNumberOfBlocks * floor( ((iBlockSize - step) % step + iBlockSize) / step ), randomize), step(step)
+{
+
+}
+
+double Evaluations::CBinaryStandardStepDeceptiveConcatenationEvaluation::d_evaluate(int iUnitation)
+{
+	double d_value;
+
+	if (iUnitation == i_block_size)
+	{
+		d_value = i_block_size;
+	}//if (iUnitation == i_block_size)
+	else
+	{
+		d_value = i_block_size - 1 - iUnitation;
+	}//else if (iUnitation == i_block_size)
+
+	return floor(((i_block_size - step) % step + d_value) / step);
+}

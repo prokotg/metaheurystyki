@@ -49,7 +49,7 @@ namespace Evaluations
 	class CBinaryDeceptiveConcatenationEvaluation : public CBinaryEvaluation
 	{
 	public:
-		CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue);
+		CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue, bool randomize);
 
 	protected:
 		virtual double d_evaluate(vector<bool>& vSolution);
@@ -59,6 +59,7 @@ namespace Evaluations
 		int i_block_size;
 
 	private:
+		std::vector<size_t> order;
 		int i_number_of_blocks;
 	};//class CBinaryDeceptiveConcatenationEvaluation : public CBinaryEvaluation
 
@@ -66,7 +67,7 @@ namespace Evaluations
 	class CBinaryStandardDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
 	{
 	public:
-		CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks);
+		CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize);
 
 	protected:
 		virtual double d_evaluate(int iUnitation);
@@ -76,11 +77,21 @@ namespace Evaluations
 	class CBinaryBimodalDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
 	{
 	public:
-		CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks);
+		CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize);
 
 	protected:
 		virtual double d_evaluate(int iUnitation);
 	};//class CBinaryBimodalDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
+
+	class CBinaryStandardStepDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
+	{
+	public:
+		CBinaryStandardStepDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, int step, bool randomize);
+	protected:
+		virtual double d_evaluate(int iUnitation);
+	private:
+		int step;
+	};
 
 
 	class CBinaryIsingSpinGlassEvaluation : public CBinaryEvaluation
