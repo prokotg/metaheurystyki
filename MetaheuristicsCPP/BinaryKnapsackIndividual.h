@@ -32,6 +32,9 @@ namespace Optimizers
 
 		vector<bool> &vGetGenotype() { return *pv_genotype; }
 		double dGetFitness() { return d_fitness; }
+		operator double() const { return d_fitness; }
+
+
 
 	private:
 		void dPunish();

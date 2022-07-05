@@ -54,7 +54,7 @@ namespace Optimizers
 	protected:
 		virtual void v_initialize(clock_t tStartTime);
 		virtual bool b_run_iteration(long long iIterationNumber, clock_t tStartTime);
-
+		vector<CBinaryKnapsackIndividual*>* pv_population;
 	private:
 		bool bEscapeStuck;
 		SimpleRingBuffer bestmean;
@@ -74,7 +74,7 @@ namespace Optimizers
 		CBinaryKnapsackEvaluation &c_binary_knapsack_evaluation;
 
 		int i_population_size;
-		vector<CBinaryKnapsackIndividual*> *pv_population;
+		
 
 		IGenerator<bool> &c_generator;
 		IBinaryKnapsackSelection &c_binary_knapsack_selection;
@@ -83,4 +83,9 @@ namespace Optimizers
 
 		mt19937 &c_random_engine;
 	};//class CBinaryKnapsackGeneticAlgorithm : public COptimizer<bool>
+
+
+
+
+
 }//namespace Optimizers

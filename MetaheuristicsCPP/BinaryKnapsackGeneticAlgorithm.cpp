@@ -1,8 +1,9 @@
 #include "BinaryKnapsackGeneticAlgorithm.h"
 #include <algorithm>
+
 using namespace Optimizers;
 
-CBinaryKnapsackGeneticAlgorithm::CBinaryKnapsackGeneticAlgorithm(CBinaryKnapsackEvaluation &cBinaryKnapsackEvaluation, IStopCondition &cStopCondition, IGenerator<bool> &cGenerator, ICrossover<bool> &cCrossover, IMutation<bool> &cMutation, IBinaryKnapsackSelection &cBinaryKnapsackSelection, mt19937 &cRandomEngine, int iPopulationSize, bool stuckness = false)
+CBinaryKnapsackGeneticAlgorithm::CBinaryKnapsackGeneticAlgorithm(CBinaryKnapsackEvaluation &cBinaryKnapsackEvaluation, IStopCondition &cStopCondition, IGenerator<bool> &cGenerator, ICrossover<bool> &cCrossover, IMutation<bool> &cMutation, IBinaryKnapsackSelection &cBinaryKnapsackSelection, mt19937 &cRandomEngine, int iPopulationSize, bool stuckness)
 	: COptimizer<bool>(cBinaryKnapsackEvaluation, cStopCondition), c_binary_knapsack_evaluation(cBinaryKnapsackEvaluation), c_generator(cGenerator), c_binary_knapsack_selection(cBinaryKnapsackSelection), c_crossover(cCrossover), c_mutation(cMutation), c_random_engine(cRandomEngine), i_population_size(iPopulationSize), bestmean(5)
 {
 	pv_population = new vector<CBinaryKnapsackIndividual*>();
@@ -112,7 +113,7 @@ void Optimizers::CBinaryKnapsackGeneticAlgorithm::v_check_stuck()
 {
 	std::sort(pv_population->begin(), pv_population->end());
 	size_t tenth_perc = size_t(pv_population->size() * 0.1);
-	double sum = std::accumulate(pv_population->end() - tenth_perc, pv_population->end(), 0.0);
+	double sum = std::accumulate(*(pv_population->end() - tenth_perc), *pv_population->end(), 0.0);
 	double mean = sum / pv_population->size();
 	bestmean.insert(mean);
 	if (bestmean.is_full()) {
@@ -187,7 +188,7 @@ float Optimizers::SimpleRingBuffer::get_rsd() const
 		});
 
 	double stdev = sqrt(accum / (buffer.size() - 1));
-	return stdev / m;
+	return float(stdev / m);
 }
 
 void Optimizers::SimpleRingBuffer::insert(float val)
@@ -204,3 +205,4 @@ void Optimizers::SimpleRingBuffer::insert(float val)
 		index += 1;
 	}
 }
+

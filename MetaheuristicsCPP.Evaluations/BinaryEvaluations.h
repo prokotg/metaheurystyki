@@ -49,7 +49,7 @@ namespace Evaluations
 	class CBinaryDeceptiveConcatenationEvaluation : public CBinaryEvaluation
 	{
 	public:
-		CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue, bool randomize);
+		CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue, bool randomize = false);
 
 	protected:
 		virtual double d_evaluate(vector<bool>& vSolution);
@@ -67,7 +67,7 @@ namespace Evaluations
 	class CBinaryStandardDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
 	{
 	public:
-		CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize);
+		CBinaryStandardDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize = false);
 
 	protected:
 		virtual double d_evaluate(int iUnitation);
@@ -77,7 +77,7 @@ namespace Evaluations
 	class CBinaryBimodalDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
 	{
 	public:
-		CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize);
+		CBinaryBimodalDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, bool randomize = false);
 
 	protected:
 		virtual double d_evaluate(int iUnitation);
@@ -86,7 +86,7 @@ namespace Evaluations
 	class CBinaryStandardStepDeceptiveConcatenationEvaluation : public CBinaryDeceptiveConcatenationEvaluation
 	{
 	public:
-		CBinaryStandardStepDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, int step, bool randomize);
+		CBinaryStandardStepDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, int step, bool randomize = false);
 	protected:
 		virtual double d_evaluate(int iUnitation);
 	private:
