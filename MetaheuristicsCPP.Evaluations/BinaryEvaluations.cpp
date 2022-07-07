@@ -39,8 +39,12 @@ CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation
 	std:iota(order.begin(), order.end(), 0);
 	if (randomize) {
 		std::random_device rd;
-		std::mt19937 g(rd());
+		std::mt19937 g(0);
 		std::shuffle(order.begin(), order.end(), g);
+		for (size_t idx = 0; idx < 10; ++idx) {
+			std::cout << order[idx] << ", ";
+		}
+		std::cout << std::endl;
 	}
 
 }//CBinaryDeceptiveConcatenationEvaluation::CBinaryDeceptiveConcatenationEvaluation(int iBlockSize, int iNumberOfBlocks, double dMaxValue)

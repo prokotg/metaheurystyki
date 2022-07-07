@@ -30,15 +30,19 @@ void initialize_result_file_ga(std::ofstream& ofs, std::string name) {
 
 	// treat ofs as csv file, initialize columns
 
-	ofs << "name" << ",";
+	ofs << "run_name" << ",";
 	ofs << "strategy" << ",";
 	ofs << "crosstype" << ",";
-	ofs << "gene_length" << ",";
+	ofs << "pcross" << ",";
+	ofs << "pmut" << ",";
+	ofs << "pop_size" << ",";
+	ofs << "run_name" << ",";
 	ofs << "run_id" << ",";
 	ofs << "best_value" << ",";
 	ofs << "best_time" << ",";
 	ofs << "best_iteration" << ",";
-	ofs << "best_ffe" << "," << std::endl;
+	ofs << "best_ffe" << std::endl;
+	
 }
 
 void initialize_result_file_knapsack(std::ofstream& ofs, std::string name) {
@@ -53,6 +57,8 @@ void initialize_result_file_knapsack(std::ofstream& ofs, std::string name) {
 	ofs << "evpressure" << ",";
 	ofs << "pcross" << ",";
 	ofs << "pmut" << ",";
+	ofs << "pop_size" << ",";
+	ofs << "punishable" << ",";
 	ofs << "run_id" << ",";
 	ofs << "best_value" << ",";
 	ofs << "best_time" << ",";

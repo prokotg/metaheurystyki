@@ -40,7 +40,7 @@ COptimizationResult<double> v_lab_2_sphere(mt19937& cRandomEngine, int64_t gene_
 
 	vector<double> v_sigmas((size_t)c_sphere_evaluation.iGetSize(), 0.1);
 
-	CIterationsStopCondition c_stop_condition(c_sphere_evaluation.dGetMaxValue(), 10000);
+	CIterationsStopCondition c_stop_condition(c_sphere_evaluation.dGetMaxValue(), 2000);
 	CRealGaussianMutation c_mutation(v_sigmas, c_sphere_evaluation, cRandomEngine);
 	//CRealOneFifthRuleMutationES11Adaptation c_mutation_adaptation(200, 1.5 , c_mutation);
 	CRealNullRealMutationES11Adaptation c_mutation_adaptation(c_mutation);
@@ -58,7 +58,7 @@ COptimizationResult<double> v_lab_2_sphere_10(mt19937& cRandomEngine, int64_t ge
 
 	vector<double> v_sigmas((size_t)c_sphere_10_evaluation.iGetSize(), 0.1);
 
-	CIterationsStopCondition c_stop_condition(c_sphere_10_evaluation.dGetMaxValue(), 1000);
+	CIterationsStopCondition c_stop_condition(c_sphere_10_evaluation.dGetMaxValue(), 2000);
 	CRealGaussianMutation c_mutation(v_sigmas, c_sphere_10_evaluation, cRandomEngine);
 	//CRealOneFifthRuleMutationES11Adaptation c_mutation_adaptation(200, 1.5, c_mutation);
 	CRealNullRealMutationES11Adaptation c_mutation_adaptation(c_mutation);
@@ -77,7 +77,7 @@ COptimizationResult<double> v_lab_2_ellipsoid(mt19937& cRandomEngine, int64_t ge
 
 	vector<double> v_sigmas((size_t)c_ellipsoid_evaluation.iGetSize(), 1);
 
-	CIterationsStopCondition c_stop_condition(c_ellipsoid_evaluation.dGetMaxValue(), 1000);
+	CIterationsStopCondition c_stop_condition(c_ellipsoid_evaluation.dGetMaxValue(), 2000);
 	CRealGaussianMutation c_mutation(v_sigmas, c_ellipsoid_evaluation, cRandomEngine);
 	//CRealOneFifthRuleMutationES11Adaptation c_mutation_adaptation(200, 1.5, c_mutation);
 	CRealNullRealMutationES11Adaptation c_mutation_adaptation(c_mutation);
@@ -115,7 +115,7 @@ COptimizationResult<double> v_lab_2_sphere_fifth(mt19937& cRandomEngine, int64_t
 
 	vector<double> v_sigmas((size_t)c_sphere_evaluation.iGetSize(), 0.1);
 
-	CIterationsStopCondition c_stop_condition(c_sphere_evaluation.dGetMaxValue(), 10000);
+	CIterationsStopCondition c_stop_condition(c_sphere_evaluation.dGetMaxValue(), 2000);
 	CRealGaussianMutation c_mutation(v_sigmas, c_sphere_evaluation, cRandomEngine);
 	CRealOneFifthRuleMutationES11Adaptation c_mutation_adaptation(200, 1.5 , c_mutation);
 
@@ -185,7 +185,7 @@ COptimizationResult<double> v_lab_2_sphere_fifth_adapt(mt19937& cRandomEngine, i
 
 	vector<double> v_sigmas = get_domain_sigmas(c_sphere_evaluation);
 
-	CIterationsStopCondition c_stop_condition(c_sphere_evaluation.dGetMaxValue(), 10000);
+	CIterationsStopCondition c_stop_condition(c_sphere_evaluation.dGetMaxValue(), 2000);
 	CRealGaussianMutation c_mutation(v_sigmas, c_sphere_evaluation, cRandomEngine);
 	CRealOneFifthRuleMutationES11Adaptation c_mutation_adaptation(200, 1.5, c_mutation);
 
@@ -257,7 +257,7 @@ void run_lab_2_null(ofstream& myfile) {
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
 			auto res = v_lab_2_sphere(c_random_engine, gen_len);
-			report_to_file<double>(myfile, std::string("sphere"), gen_len, run_id, res);
+			report_to_file<double>(myfile, std::string("spheren"), gen_len, run_id, res);
 		}
 	}
 
@@ -289,7 +289,7 @@ void run_lab_2_fifth(ofstream& myfile) {
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
 			auto res = v_lab_2_sphere_fifth(c_random_engine, gen_len);
-			report_to_file<double>(myfile, std::string("sphere_fifth"), gen_len, run_id, res);
+			report_to_file<double>(myfile, std::string("spheren_fifth"), gen_len, run_id, res);
 		}
 	}
 
@@ -321,7 +321,7 @@ void run_lab_2_fifth_adapt(ofstream& myfile, double slice=0.01) {
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
 			auto res = v_lab_2_sphere_fifth_adapt(c_random_engine, gen_len, slice);
-			report_to_file<double>(myfile, std::string("sphere_fifth_adapt_").append(std::to_string(slice)), gen_len, run_id, res);
+			report_to_file<double>(myfile, std::string("spheren_fifth_adapt_").append(std::to_string(slice)), gen_len, run_id, res);
 		}
 	}
 

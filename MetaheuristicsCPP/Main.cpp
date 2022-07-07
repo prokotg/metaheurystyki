@@ -10,6 +10,7 @@ int main()
 	// ########################## RAPORT 2 ########################
 	//run_lab_4();
 	//run_lab_5();
+	//run_lab_6();
 	run_lab_7();
 	system("PAUSE");
 	return 0;

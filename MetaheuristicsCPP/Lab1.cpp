@@ -27,7 +27,8 @@ using namespace std;
 COptimizationResult<bool> v_lab_1_one_max(mt19937& cRandomEngine, int64_t gene_length = 5)
 {
 	CBinaryOneMaxEvaluation c_evaluation(gene_length);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CBinaryRandomSearch c_random_search(c_evaluation, c_stop_condition, cRandomEngine);
 
 	c_random_search.vRun();
@@ -38,7 +39,8 @@ COptimizationResult<bool> v_lab_1_standard_deceptive_concatenation(mt19937& cRan
 {
 	int64_t block_size = gene_length / 5;
 	CBinaryStandardDeceptiveConcatenationEvaluation c_evaluation(gene_length, block_size);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CBinaryRandomSearch c_random_search(c_evaluation, c_stop_condition, cRandomEngine);
 
 	c_random_search.vRun();
@@ -50,7 +52,8 @@ COptimizationResult<bool> v_lab_1_bimodal_deceptive_concatenation(mt19937& cRand
 {
 	int64_t block_size = gene_length / 10;
 	CBinaryBimodalDeceptiveConcatenationEvaluation c_evaluation(gene_length, block_size);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CBinaryRandomSearch c_random_search(c_evaluation, c_stop_condition, cRandomEngine);
 
 	c_random_search.vRun();
@@ -61,7 +64,8 @@ COptimizationResult<bool> v_lab_1_bimodal_deceptive_concatenation(mt19937& cRand
 COptimizationResult<bool> v_lab_1_ising_spin_glass(mt19937& cRandomEngine, int64_t gene_length = 25)
 {
 	CBinaryIsingSpinGlassEvaluation c_evaluation(25);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CBinaryRandomSearch c_random_search(c_evaluation, c_stop_condition, cRandomEngine);
 
 	c_random_search.vRun();
@@ -72,7 +76,8 @@ COptimizationResult<bool> v_lab_1_ising_spin_glass(mt19937& cRandomEngine, int64
 COptimizationResult<bool> v_lab_1_nk_landscapes(mt19937& cRandomEngine, int64_t gene_length = 10)
 {
 	CBinaryNKLandscapesEvaluation c_evaluation(gene_length);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CBinaryRandomSearch c_random_search(c_evaluation, c_stop_condition, cRandomEngine);
 
 	c_random_search.vRun();
@@ -128,7 +133,8 @@ void run_lab_1_rs(ofstream& myfile) {
 COptimizationResult<bool> v_lab_1_one_max_greedy(mt19937& cRandomEngine, int64_t gene_length = 5, size_t reps=1)
 {
 	CBinaryOneMaxEvaluation c_evaluation(gene_length);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CGreedyRS c_random_search(c_evaluation, c_stop_condition, cRandomEngine, true, reps);
 
 	c_random_search.vRun();
@@ -139,7 +145,8 @@ COptimizationResult<bool> v_lab_1_standard_deceptive_concatenation_greedy(mt1993
 {
 	int64_t block_size = gene_length / 5;
 	CBinaryStandardDeceptiveConcatenationEvaluation c_evaluation(gene_length, block_size);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CGreedyRS c_random_search(c_evaluation, c_stop_condition, cRandomEngine, true, reps);
 	c_random_search.vRun();
 
@@ -150,7 +157,8 @@ COptimizationResult<bool> v_lab_1_bimodal_deceptive_concatenation_greedy(mt19937
 {
 	int64_t block_size = gene_length / 10;
 	CBinaryBimodalDeceptiveConcatenationEvaluation c_evaluation(gene_length, block_size);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CGreedyRS c_random_search(c_evaluation, c_stop_condition, cRandomEngine, true, reps);
 	c_random_search.vRun();
 
@@ -160,7 +168,8 @@ COptimizationResult<bool> v_lab_1_bimodal_deceptive_concatenation_greedy(mt19937
 COptimizationResult<bool> v_lab_1_ising_spin_glass_greedy(mt19937& cRandomEngine, int64_t gene_length = 25, size_t reps = 1)
 {
 	CBinaryIsingSpinGlassEvaluation c_evaluation(25);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CGreedyRS c_random_search(c_evaluation, c_stop_condition, cRandomEngine, true, reps);
 	c_random_search.vRun();
 
@@ -170,7 +179,8 @@ COptimizationResult<bool> v_lab_1_ising_spin_glass_greedy(mt19937& cRandomEngine
 COptimizationResult<bool> v_lab_1_nk_landscapes_greedy(mt19937& cRandomEngine, int64_t gene_length = 10, size_t reps = 1)
 {
 	CBinaryNKLandscapesEvaluation c_evaluation(gene_length);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	//CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 500);
 	CGreedyRS c_random_search(c_evaluation, c_stop_condition, cRandomEngine, true, reps);
 	c_random_search.vRun();
 
@@ -185,37 +195,37 @@ void run_lab_1_rs_greedy(ofstream& myfile, size_t reps = 1) {
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
 			auto res = v_lab_1_one_max_greedy(c_random_engine, gen_len, reps);
-			report_to_file<bool>(myfile, std::string("one_max_greedy"), gen_len, run_id, res);
+			report_to_file<bool>(myfile, std::string("one_max_greedy").append(std::to_string(reps)), gen_len, run_id, res);
 		}
 	}
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 5, 10, 50 }) {
 			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
-			report_to_file<bool>(myfile, std::string("standard_deceptive_concatenation_greedy"), gen_len, run_id, res);
+			report_to_file<bool>(myfile, std::string("standard_deceptive_concatenation_greedy").append(std::to_string(reps)), gen_len, run_id, res);
 		}
 	}
 
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 10, 50 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
-			report_to_file<bool>(myfile, std::string("bimodal_deceptive_concatenation_greedy"), gen_len, run_id, res);
+			auto res = v_lab_1_bimodal_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
+			report_to_file<bool>(myfile, std::string("bimodal_deceptive_concatenation_greedy").append(std::to_string(reps)), gen_len, run_id, res);
 		}
 	}
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 25, 49, 100, 484 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
-			report_to_file<bool>(myfile, std::string("ising_spin_glass_greedy"), gen_len, run_id, res);
+			auto res = v_lab_1_ising_spin_glass_greedy(c_random_engine, gen_len, reps);
+			report_to_file<bool>(myfile, std::string("ising_spin_glass_greedy").append(std::to_string(reps)), gen_len, run_id, res);
 		}
 	}
 
 
 	for (size_t run_id = 0; run_id < 10; run_id++) {
 		for (const int& gen_len : { 10, 50, 100, 200 }) {
-			auto res = v_lab_1_standard_deceptive_concatenation_greedy(c_random_engine, gen_len, reps);
-			report_to_file<bool>(myfile, std::string("nk_landscapes_greedy"), gen_len, run_id, res);
+			auto res = v_lab_1_nk_landscapes_greedy(c_random_engine, gen_len, reps);
+			report_to_file<bool>(myfile, std::string("nk_landscapes_greedy").append(std::to_string(reps)), gen_len, run_id, res);
 		}
 	}
 }

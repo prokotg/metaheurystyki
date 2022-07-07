@@ -53,7 +53,6 @@ void Optimizers::CBinaryKnapsackIndividual::dPunish()
 			rep = 1;
 		}
 		d_fitness *=  (1 -  rep);
-
 	}
 
 }

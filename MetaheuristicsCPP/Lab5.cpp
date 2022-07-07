@@ -59,7 +59,7 @@ void run_lab_5_penalty(ofstream& myfile) {
 			auto res = v_lab_5_penalty(c_random_engine, punishable);
 			std::cout << std::get<0>(res.ill_count) << std::endl;
 			std::cout << std::get<1>(res.ill_count) << std::endl;
-			report_to_file_knapsack(myfile, "none", 0.5, 1.0, true, 100, run_id, res.cRes);
+			report_to_file_knapsack(myfile, "none", 0.5, 1.0, int(punishable), 100, run_id, res.cRes);
 		}
 	}
 }
@@ -73,7 +73,7 @@ void run_lab_5_optimize(ofstream& myfile) {
 			auto res = v_lab_5_penalty(c_random_engine, punishable);
 			std::cout << std::get<0>(res.ill_count) << std::endl;
 			std::cout << std::get<1>(res.ill_count) << std::endl;
-			report_to_file_knapsack(myfile, "none", 0.5, 1.0, true, 100, run_id, res.cRes);
+			report_to_file_knapsack(myfile, "none", 0.5, 1.0, int(punishable), 100, run_id, res.cRes);
 		}
 	}
 }
@@ -85,8 +85,8 @@ void run_lab_5() {
 	//run_lab_5_penalty(lab5_penalty);
 	//lab5_penalty.close();
 
-	ofstream lab5_optimize;
-	initialize_result_file_knapsack(lab5_optimize, std::string("lab5_optimize"));
-	run_lab_5_optimize(lab5_optimize);
-	lab5_optimize.close();
+	//ofstream lab5_optimize;
+	//initialize_result_file_knapsack(lab5_optimize, std::string("lab5_optimize"));
+	//run_lab_5_optimize(lab5_optimize);
+	//lab5_optimize.close();
 }

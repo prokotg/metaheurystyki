@@ -48,7 +48,7 @@ void report_to_file_knapsack(std::ofstream& file,
 	std::string evpressure,
 	float pcross,
 	float pmut,
-	bool punishable,
+	int punishable,
 	int64_t pop_size,
 	int64_t run_id,
 	COptimizationResult<TElement>& cOptimizationResult) {
@@ -57,7 +57,7 @@ void report_to_file_knapsack(std::ofstream& file,
 
 	file << evpressure << ",";
 	file << pcross << "," << pmut << "," << pop_size << "," << punishable << ",";
-	file << "," << run_id << ",";
+	file << run_id << ",";
 	file << cOptimizationResult.dGetBestValue() << ",";
 	file << cOptimizationResult.dGetBestTime() << ",";
 	file << cOptimizationResult.iGetBestIteration() << ",";

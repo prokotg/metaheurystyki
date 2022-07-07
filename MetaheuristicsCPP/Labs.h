@@ -6,7 +6,7 @@ void run_lab_2();
 
 void run_lab_4();
 void run_lab_5();
-
+void run_lab_6();
 void run_lab_7();
 
 using namespace Optimizers;

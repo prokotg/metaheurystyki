@@ -36,6 +36,8 @@ namespace Optimizers
 
 	private:
 		void v_crossover();
+		void check_stuck();
+		void global_mutation();
 
 		ICrossover<bool> &c_crossover;
 

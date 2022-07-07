@@ -60,7 +60,7 @@ void v_report_optimization_result(COptimizationResult<TElement>& cOptimizationRe
 COptimizationResult<bool>  v_lab_4_ising(mt19937& cRandomEngine, float pcross = 0.5, float pmut_mult = 1, size_t pop_size = 50)
 {
 	CBinaryIsingSpinGlassEvaluation c_evaluation(100);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 100);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 10000);
 
 	CBinaryRandomGenerator c_generation(c_evaluation.cGetConstraint(), cRandomEngine);
 	CBinaryOnePointCrossover c_crossover(pcross, cRandomEngine);
@@ -77,7 +77,7 @@ COptimizationResult<bool>  v_lab_4_ising(mt19937& cRandomEngine, float pcross = 
 COptimizationResult<bool>  v_lab_4_nk(mt19937& cRandomEngine, float pcross = 0.5, float pmut_mult = 1, size_t pop_size = 50)
 {
 	CBinaryNKLandscapesEvaluation c_evaluation(100);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 100);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 10000);
 
 	CBinaryRandomGenerator c_generation(c_evaluation.cGetConstraint(), cRandomEngine);
 	CBinaryOnePointCrossover c_crossover(pcross, cRandomEngine);
@@ -94,7 +94,7 @@ COptimizationResult<bool>  v_lab_4_nk(mt19937& cRandomEngine, float pcross = 0.5
 COptimizationResult<bool>  v_lab_4_max_3_sat(mt19937& cRandomEngine, float pcross=0.5, float pmut_mult = 1, size_t pop_size = 50)
 {
 	CBinaryMax3SatEvaluation c_evaluation(100);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 100);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 10000);
 
 	CBinaryRandomGenerator c_generation(c_evaluation.cGetConstraint(), cRandomEngine);
 	CBinaryOnePointCrossover c_crossover(pcross, cRandomEngine);
@@ -111,7 +111,7 @@ COptimizationResult<bool>  v_lab_4_max_3_sat(mt19937& cRandomEngine, float pcros
 COptimizationResult<bool> v_lab_4_trap(mt19937& cRandomEngine, float pcross=0.5, float pmut_mult = 1, size_t pop_size=50, size_t block_size = 50)
 {
 	CBinaryStandardDeceptiveConcatenationEvaluation c_evaluation(3, block_size);
-	CIterationsStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 100);
+	CFFEStopCondition c_stop_condition(c_evaluation.dGetMaxValue(), 10000);
 
 	CBinaryRandomGenerator c_generation(c_evaluation.cGetConstraint(), cRandomEngine);
 	CBinaryOnePointCrossover c_crossover(0.5, cRandomEngine);
@@ -209,7 +209,9 @@ void run_lab_4_params_change(ofstream& myfile) {
 
 void run_lab_4() {
 	ofstream myfile;
-	initialize_result_file_ga(myfile, std::string("lab4"));
-	//run_lab_4_pop_change(myfile);
-	run_lab_4_params_change(myfile);
+	initialize_result_file_ga(myfile, std::string("lab4pop"));
+	run_lab_4_pop_change(myfile);
+	/*ofstream myfile2;
+	initialize_result_file_ga(myfile2, std::string("lab4params"));
+	run_lab_4_params_change(myfile2);*/
 }

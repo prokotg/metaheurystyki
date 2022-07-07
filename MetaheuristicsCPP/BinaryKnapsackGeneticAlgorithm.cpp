@@ -131,9 +131,12 @@ void Optimizers::CBinaryKnapsackGeneticAlgorithm::global_mutation()
 	std::mt19937 g(rd());
 
 	std::shuffle(pv_population->begin(), pv_population->end(), g);
+	auto old_prob = c_mutation.dGetProbability();
+	c_mutation.vSetProbability(0.5);
 	for (auto idx = 0; idx < (pv_population->size() / 3); ++idx) {
 		pv_population->at(idx)->bMutate();
 	}
+	c_mutation.vSetProbability(old_prob);
 }
 //void CBinaryKnapsackGeneticAlgorithm::v_mutation()
 

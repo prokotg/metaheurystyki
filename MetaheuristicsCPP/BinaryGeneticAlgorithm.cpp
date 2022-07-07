@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <iomanip>
+#include <iostream>
 using namespace Optimizers;
 
 CBinaryGeneticAlgorithm::CBinaryGeneticAlgorithm(IEvaluation<bool> &cEvaluation, IStopCondition &cStopCondition, IGenerator<bool> &cGeneration, ICrossover<bool> &cCrossover, IMutation<bool> &cMutation, ISelection<bool> &cSelection, mt19937 &cRandomEngine, int iPopulationSize)
@@ -18,13 +19,16 @@ bool CBinaryGeneticAlgorithm::b_run_iteration(long long iIterationNumber, clock_
 
 	v_crossover();
 	v_evaluation();
-
+	//std::cout <<  std::endl << iIterationNumber << "|";
 	bool b_new_best = b_check_new_best();
-
+	//std::cout  <<  std::endl <<  "|";
 	v_mutation();
 	v_evaluation();
-
-	return b_check_new_best() || b_new_best;
+	check_stuck();
+	auto n = b_check_new_best();
+	//std::cout << "|";
+	return  n || b_new_best;
+	
 }//bool CBinaryGeneticAlgorithm::b_run_iteration(long long iIterationNumber, clock_t tStartTime)
 
 void CBinaryGeneticAlgorithm::v_crossover()
@@ -65,7 +69,28 @@ void CBinaryGeneticAlgorithm::v_crossover()
 			delete pv_child_1_genotype;
 		}//else if (c_crossover.bCross(pc_parent_0->vGetGenotype(), pc_parent_1->vGetGenotype(), *pv_child_0_genotype, *pv_child_1_genotype))
 	}//for (size_t i = 0; i < pv_population->size(); i += 2)
-}//void CBinaryGeneticAlgorithm::v_crossover()
+}
+void Optimizers::CBinaryGeneticAlgorithm::check_stuck()
+{
+	std::sort(pv_population->begin(), pv_population->end());
+	if (pv_population->at(pv_population->size()-1)->dGetFitness() == pv_population->at(int(pv_population->size() / 2))->dGetFitness()) {
+		global_mutation();
+	}
+}
+void Optimizers::CBinaryGeneticAlgorithm::global_mutation()
+{
+	std::random_device rd;
+	std::mt19937 g(rd());
+
+	std::shuffle(pv_population->begin(), pv_population->end(), g);
+	auto old_prob = c_mutation.dGetProbability();
+	c_mutation.vSetProbability(0.5);
+	for (auto idx = 0; idx < (pv_population->size()); ++idx) {
+		pv_population->at(idx)->bMutate();
+	}
+	c_mutation.vSetProbability(old_prob);
+}
+//void CBinaryGeneticAlgorithm::v_crossover()
 
 
 void Optimizers::DSM::calculate_single_ind(std::vector<bool> genotype)
@@ -146,7 +171,7 @@ bool Optimizers::CBinaryGeneticAlgorithmDSM::b_run_iteration(long long iIteratio
 {
 	bool res = CBinaryGeneticAlgorithm::b_run_iteration(iIterationNumber, tStartTime);
 	dsm.collect(pv_population);
-	if (iIterationNumber % 20 == 0 && iIterationNumber != 0) {
+	if (iIterationNumber % 200 == 0 && iIterationNumber != 0) {
 		
 		dsm.collect(pv_population);
 		dsm.to_file(dsm_filepath, iIterationNumber);

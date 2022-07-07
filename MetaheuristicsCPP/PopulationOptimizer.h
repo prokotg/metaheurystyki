@@ -8,6 +8,7 @@
 #include "VectorUtils.h"
 
 #include <vector>
+#include <iostream>
 
 using namespace Generators;
 using namespace Mutations;
@@ -80,7 +81,7 @@ namespace Optimizers
 					pc_current_best_individual = pv_population->at(i);
 				}//if (pv_population->at(i)->dGetFitness() > pc_current_best_individual->dGetFitness())
 			}//for (size_t i = 1; i < pv_population->size(); i++)
-
+			//std::cout << pc_current_best_individual->dGetFitness();
 			return COptimizer<TElement>::b_check_new_best(pc_current_best_individual->vGetGenotype(), pc_current_best_individual->dGetFitness(), bOnlyImprovements);
 		}//bool b_check_new_best(bool bOnlyImprovements = true)
 
